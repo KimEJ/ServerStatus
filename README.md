@@ -1,27 +1,11 @@
 # ServerStatus
 
-ServerStatus is a full rewrite of [mojeda's](https://github.com/mojeda) [ServerStatus](https://github.com/mojeda/ServerStatus) script, which in turn is a modified version of [BlueVM's](http://www.lowendtalk.com/discussion/comment/169690#Comment_169690) script.
+ServerStatus is a rewritten version of [BotoX's ServerStatus](https://github.com/BotoX/ServerStatus) as python3.
 
-### Live demo:
-* https://status.botox.bz/
-
-There are many things which I dislike about the original script, for example:
-* requires webserver and PHP for every client
-* querys clients for every user that visits the site
-* hangs when said clients don't respond
-* loading slow with many servers
-* messy codebase
-* progress bar animation skips
-* setup process complicated
-
-Therefore I made my own ServerStatus which is quite different than the others under the hood, but still looks as nice!
-
-The way my ServerStatus works is as following:
-* Master server listens on port 35061 TCP
-* Clients connect to the master server
-* Clients generate statistics and send it to the master server periodically (eg. every second)
-* Master server writes summarized stats to web-dir/json/stats.json
-* Users load HTML page with JavaScript, which fetches the stats.json every two seconds and updates the table
+### TODOS
+- [X] Rewrite python3
+- [ ] More elegant setup
+- [ ] Various server web functions (notifications, graphs, etc.)
 
 # Installation & Usage
 
