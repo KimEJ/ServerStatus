@@ -14,6 +14,7 @@ import json
 import collections
 import psutil
 
+
 def get_uptime():
     return int(time.time() - psutil.boot_time())
 
@@ -94,9 +95,11 @@ if __name__ == '__main__':
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((SERVER, PORT))
             data = s.recv(1024).decode()
+            print(data)
             if "Authentication required" in data:
                 s.send((USER + ':' + PASSWORD + '\n').encode())
                 data = s.recv(1024).decode()
+                print(data)
                 if "Authentication successful" not in data:
                     print(data)
                     raise socket.error
