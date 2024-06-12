@@ -27,8 +27,7 @@ export class TasksService {
                     if (node.lastAlert === null || date.getTime() - node.timeLimitAlert * 1000 > node.lastAlert.getTime()) {
                         try {
                             const user = (await this.usersService.findAdmin()).map(user => user.phone);
-                            Logger.log(`Alert sent to ${user}`);
-                            await this.smsService.sendSms(user, `Node ${node.host} is not synced`);
+                            await this.smsService.sendSms(user, `${node.host} 노드의 동기화가 ${node.timeLimit}초 이상 지연되었습니다.`);
                             node.lastAlert = date;
                             await this.nodesService.updateNode(node.id, node);
                         } catch (error) {

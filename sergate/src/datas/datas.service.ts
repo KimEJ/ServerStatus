@@ -31,27 +31,27 @@ export class DatasService {
     try {
       if(node.maxCPU !== null && node.minCPU !== null) {
         if(node.maxCPU < dataDto.cpu) {
-          throw new Error(`Node ${node.host} is CPU overloaded`);
+          throw new Error(`${node.host}노드의 CPU가 과부하 상태입니다.`);
         } else if(node.minCPU > dataDto.cpu) {
-          throw new Error(`Node ${node.host} is CPU underloaded`);
+          throw new Error(`${node.host}노드의 CPU가 저하 상태입니다.`);
         }
       } else if(node.maxMemory !== null && node.minMemory !== null) {
         if(node.maxMemory < dataDto.memory_used) {
-          throw new Error(`Node ${node.host} is Memory overloaded`);
+          throw new Error(`${node.host}노드의 메모리가 과부하 상태입니다.`);
         } else if(node.minMemory > dataDto.memory_used) {
-          throw new Error(`Node ${node.host} is Memory underloaded`);
+          throw new Error(`${node.host}노드의 메모리가 저하 상태입니다.`);
         }
       } else if(node.maxNetwork !== null && node.minNetwork !== null) {
         if(node.maxNetwork < dataDto.network_rx || node.maxNetwork < dataDto.network_tx) {
-          throw new Error(`Node ${node.host} is Network overloaded`);
+          throw new Error(`${node.host}노드의 네트워크가 과부하 상태입니다.`);
         } else if(node.minNetwork > dataDto.network_rx || node.minNetwork > dataDto.network_tx) {
-          throw new Error(`Node ${node.host} is Network underloaded`);
+          throw new Error(`${node.host}노드의 네트워크가 저하 상태입니다.`);
         }
       } else if(node.maxLoad !== null && node.minLoad !== null) {
         if(node.maxLoad < dataDto.load) {
-          throw new Error(`Node ${node.host} is Load overloaded`);
+          throw new Error(`${node.host}노드의 Load가 과부하 상태입니다.`);
         } else if(node.minLoad > dataDto.load) {
-          throw new Error(`Node ${node.host} is Load underloaded`);
+          throw new Error(`${node.host}노드의 Load가 저하 상태입니다.`);
         }
       }
     } catch (error) {
@@ -61,7 +61,6 @@ export class DatasService {
           Logger.error(`Alert sent to ${node.host}: ${error.message}`);
           try {
             const user = (await this.usersService.findAdmin()).map(user => user.phone);
-            Logger.log(`Alert sent to ${user}`);
             await this.smsService.sendSms(user, error.message);
             node.lastAlert = date;
           } catch (error) {
