@@ -1,1 +1,4 @@
 default.sublime-workspace
+
+*/package-lock.json
+*/yarn.lock
