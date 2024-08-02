@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-URL = "http://192.168.0.35:3001"
-USER = "211.193.58.208"
-PASSWORD = "9sao1qmr"
-INTERVAL = 1 # Update interval
+URL = "http://175.126.77.146:3001"
+USER = "101.202.62.60"
+PASSWORD = "wl2q5jll"
+INTERVAL = 60 # Update interval
 
 
 import socket
@@ -190,8 +190,9 @@ if __name__ == '__main__':
                 if response.status_code == 201:
                     print(response.text)
                 else:
-                    print(response.status_code, response.text)
+                    print(response.status_code, response.text, "Refresh token")
                     token = refresh(URL, token[1])
+                    print("token: ", token)
                     if not token:
                         print("Refresh failed")
                         exit()

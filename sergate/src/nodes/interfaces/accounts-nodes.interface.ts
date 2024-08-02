@@ -6,7 +6,11 @@ export interface AccountsNodes {
   readonly location: string;
   readonly password: string;
   readonly lastSync: Date;
-  readonly lastAlert: Date;
+  readonly timeLastAlert: Date;
+  readonly CPULastAlert: Date;
+  readonly memoryLastAlert: Date;
+  readonly networkLastAlert: Date;
+  readonly loadLastAlert: Date;
   readonly timeLimit: number;
   readonly timeLimitAlert: number;
   readonly maxCPU: number;

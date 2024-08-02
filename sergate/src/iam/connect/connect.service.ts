@@ -76,7 +76,7 @@ export class ConnectService {
 
   async refreshTokens(refreshTokenDto: RefreshTokenDto) {
     try {
-      const { id } = await this.jwtService.verifyAsync<Pick<JWTPayload, 'id'>>(
+      const { sub } = await this.jwtService.verifyAsync<Pick<{sub: number}, 'sub'>>(
         refreshTokenDto.refreshToken,
         {
           secret: this.jwtConfiguration.secret,
@@ -84,7 +84,9 @@ export class ConnectService {
           issuer: this.jwtConfiguration.issuer,
         },
       );
-      const node = await this.nodesService.findBySub(id);
+      console.log("refresh request id: ", sub);
+      const node = await this.nodesService.findBySub(sub);
+      console.log("refresh request node: ", node);
       return this.generateTokens(node);
     } catch (err) {
       throw new UnauthorizedException(err);

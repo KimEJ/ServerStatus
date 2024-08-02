@@ -1,7 +1,8 @@
 <template>
-  <HelloWorld />
+  <NodeList />
 </template>
 
 <script lang="ts" setup>
+
   //
 </script>

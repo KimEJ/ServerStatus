@@ -7,7 +7,13 @@ export class Node {
       public location: string,
       public password: string,
       public lastSync: Date,
-      public lastAlert: Date,
+
+      public timeLastAlert: Date,
+      public CPULastAlert: Date,
+      public memoryLastAlert: Date,
+      public networkLastAlert: Date,
+      public loadLastAlert: Date,
+
       public timeLimit: number,
       public timeLimitAlert: number,
 

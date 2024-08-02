@@ -23,9 +23,9 @@ export class NodesController {
     return this.nodesService.findAll();
   }
 
-  @Get('/:id')
-  public async findOneNode(@Param('id') id: string) {
-    return this.nodesService.findById(id);
+  @Get('/:host')
+  public async findOneNode(@Param('host') host: string) {
+    return this.nodesService.findByHost(host);
   }
 
   @Patch('/:id')

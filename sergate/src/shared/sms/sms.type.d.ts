@@ -7,7 +7,7 @@ export type Result = {
 };
 
 export type Data = {
-    result?: Array<Result>;
+    result?: Result;
     error?: string;
     success: number;
 };

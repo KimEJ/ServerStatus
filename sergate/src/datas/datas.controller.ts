@@ -40,8 +40,8 @@ export class DatasController {
     return this.datasService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.datasService.findOne(+id);
+  @Get(':host')
+  findOne(@Param('host') host: string) {
+    return this.datasService.findOne(host);
   }
 }

@@ -27,7 +27,19 @@ export class Nodes {
   lastSync: Date;
 
   @Column({ type: 'timestamp', nullable: true})
-  lastAlert: Date;
+  timeLastAlert: Date;
+
+  @Column({ type: 'timestamp', nullable: true})
+  CPULastAlert: Date;
+
+  @Column({ type: 'timestamp', nullable: true})
+  memoryLastAlert: Date;
+
+  @Column({ type: 'timestamp', nullable: true})
+  networkLastAlert: Date;
+
+  @Column({ type: 'timestamp', nullable: true})
+  loadLastAlert: Date;
 
   @Column({ default: 5 })
   timeLimit: number;

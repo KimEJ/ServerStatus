@@ -17,8 +17,14 @@ export class DatasTypeOrmRepository implements DatasRepository {
   }
 
   public async findByHost(host: string) {
-    return await this.datasRepository.findOneBy({
-      host: host,
+    return await this.datasRepository.find({
+      where: {
+        host: host,
+      },
+      order: {
+        created_at: 'DESC',
+      },
+      take: 100,
     });
   }
 
